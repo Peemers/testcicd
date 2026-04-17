@@ -1,0 +1,20 @@
+﻿name : Pipeline 1
+
+on:
+  push:
+    branche:[main]
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    step:
+      -name: Step 1
+      run: echo "hello world !!"
+jobs2:
+  runs-on: windows-latest
+  steps:
+    - name: My awesome step
+      run: mkdir app
+
+    - name: My other awesome step
+      run2: dir
