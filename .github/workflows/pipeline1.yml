@@ -1,21 +1,22 @@
-﻿name : Pipeline 1
+﻿name: Pipeline 1
 
 on:
-  push:
-    branche:[main]
+  #push:
+    #branches: [ main ]  # Activé pour déclencher au push
+  workflow_dispatch:     # Permet aussi le lancement manuel
 
 jobs:
   job1:
     runs-on: ubuntu-latest
-    step:
-      -name: Step 1
-      run: echo "hello world !!"
-jobs2:
-  runs-on: windows-latest
-  needs: [job1]
-  steps:
-    - name: My awesome step
-      run: mkdir app
+    steps:
+      - name: Step 1     # Corrigé : espace après le tiret
+        run: echo "hello world !!"
 
-    - name: My other awesome step
-      run2: dir
+  job2:
+    runs-on: windows-latest
+    needs: [ job1 ]
+    steps:
+      - name: My awesome step
+        run: mkdir app
+      - name: My other awesome step
+        run: dir         # Corrigé : 'run' au lieu de 'run2'
